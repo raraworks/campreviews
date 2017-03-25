@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+<div class="container">
+
+  <header class="jumbotron">
+    <h1>Welcome to Camp Reviews</h1>
+    <p>
+      View campgrounds from all over the world!
+    </p>
+    <p>
+      <a class="btn btn-primary btn-large" href="/campgrounds/new">Add a new campground</a>
+    </p>
+  </header>
+<!--  viss grids ir div klasē row -->
+  <div class="row" style="display:flex; flex-wrap: wrap;">
+    <% for (var i = 0; i < campgrounds.length; i++) { %>
+      <!-- katram campgroundam noteiktā viewport izmērā noteikts lielums -->
+      <div class="col-xs-12 col-sm-6 col-md-3">
+
+        <!--par cik atteli palika tikpat lieli, ap attelu ieliek konteineru, kuram klase ir thumbnail, kas samazina attēlu -->
+        <div class="thumbnail">
+          <a href="/campgrounds/<%= campgrounds[i]._id %>">
+            <div class="caption">
+              <h3><%= campgrounds[i].name %></h3>
+            </div>
+            <img src="<%= campgrounds[i].image %>" />
+          </a>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>
+<% include ../partials/footer %>
